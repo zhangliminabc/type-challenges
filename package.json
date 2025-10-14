@@ -1,0 +1,19 @@
+{
+  "name": "user-info-fetch",
+  "version": "1.0.0",
+  "description": "实现如果authUserInfo没有值就从getUserInfo函数中获取用户信息",
+  "main": "user-info.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node user-info.test.ts",
+    "dev": "ts-node user-info.ts"
+  },
+  "keywords": ["typescript", "user-info", "auth"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  }
+}
