@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/mine/mine"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "name": "goods",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "packageB",
+      "name": "order",
+      "pages": [
+        "pages/order/order",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "packageC",
+      "name": "user",
+      "pages": [
+        "pages/profile/profile",
+        "pages/settings/settings"
+      ]
+    },
+    {
+      "root": "packageIndependent",
+      "name": "activity",
+      "pages": [
+        "pages/promotion/promotion",
+        "pages/coupon/coupon"
+      ],
+      "independent": true
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["goods"]
+    },
+    "pages/home/home": {
+      "network": "wifi",
+      "packages": ["order"]
+    }
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FF6B6B",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "分类",
+        "iconPath": "assets/icons/category.png",
+        "selectedIconPath": "assets/icons/category-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/icons/mine.png",
+        "selectedIconPath": "assets/icons/mine-active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "小程序示例",
+    "navigationBarTextStyle": "black"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}
