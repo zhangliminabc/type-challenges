@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>小程序二维码动态生成（前端）</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>小程序二维码动态生成（前端）</h1>
+        <p class="subtitle">
+          前端通过调用后端接口生成二维码，并在页面中预览与下载。
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="qrForm" class="form">
+          <div class="field">
+            <label for="scene">scene（必填，最长 32）</label>
+            <input
+              id="scene"
+              name="scene"
+              type="text"
+              placeholder="例如：order_id=123"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="page">page（可选）</label>
+            <input
+              id="page"
+              name="page"
+              type="text"
+              placeholder="例如：pages/home/index"
+            />
+          </div>
+
+          <div class="field row">
+            <div>
+              <label for="width">width（可选）</label>
+              <input
+                id="width"
+                name="width"
+                type="number"
+                min="280"
+                max="1280"
+                step="1"
+                placeholder="430"
+              />
+            </div>
+            <div>
+              <label for="envVersion">env_version</label>
+              <select id="envVersion" name="envVersion">
+                <option value="release" selected>release</option>
+                <option value="trial">trial</option>
+                <option value="develop">develop</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field row">
+            <div>
+              <label for="checkPath">check_path</label>
+              <select id="checkPath" name="checkPath">
+                <option value="true" selected>true</option>
+                <option value="false">false</option>
+              </select>
+            </div>
+            <div>
+              <label for="isHyaline">is_hyaline</label>
+              <select id="isHyaline" name="isHyaline">
+                <option value="false" selected>false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="apiBase">API Base</label>
+            <input
+              id="apiBase"
+              name="apiBase"
+              type="url"
+              placeholder="http://localhost:3000"
+              value="http://localhost:3000"
+            />
+            <small class="hint">后端需实现 POST /api/wxacode</small>
+          </div>
+
+          <div class="actions">
+            <button id="generateBtn" type="submit">生成二维码</button>
+            <button id="downloadBtn" type="button" disabled>下载 PNG</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card preview">
+        <div class="preview-header">
+          <h2>预览</h2>
+          <span id="status" class="status">等待生成</span>
+        </div>
+        <div class="preview-body">
+          <img id="qrImage" alt="小程序二维码预览" />
+        </div>
+        <pre id="log" class="log" aria-live="polite"></pre>
+      </section>
+
+      <section class="card note">
+        <h2>说明</h2>
+        <ul>
+          <li>小程序二维码必须由服务端调用微信接口生成，前端仅负责调用并展示。</li>
+          <li>服务端返回 image/png 或 JSON（含 base64）均可，前端会自动兼容。</li>
+          <li>跨域请在服务端配置 CORS。</li>
+        </ul>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
